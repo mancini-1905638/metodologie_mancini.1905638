@@ -4,31 +4,33 @@ public abstract class Animale
 {
 	protected int zampe;
 	protected Taglia taglia;
+	protected String verso;
 	
-	public Animale(Taglia taglia, int zampe)
+	public Animale(Taglia taglia, int zampe, String verso)
 	{
 		this.taglia = taglia;
 		this.zampe = zampe;
+		this.verso = verso;
 	}
 	
-	abstract void emettiVerso();
+	public void emettiverso() { System.out.println(verso); }
 	public int getNumeroDiZampe() { return zampe; }
 	public Taglia getTaglia() { return taglia; }
 }
 
 abstract class Mammifero extends Animale
 {
-	public Mammifero(Taglia taglia, int zampe)
+	public Mammifero(Taglia taglia, int zampe, String verso)
 	{
-		super(taglia,zampe);
+		super(taglia,zampe,verso);
 	}
 }
 
 abstract class Felino extends Mammifero
 {
-	public Felino(Taglia taglia)
+	public Felino(Taglia taglia, String verso)
 	{
-		super(taglia, 4);
+		super(taglia, 4, verso);
 	}
 }
 
@@ -36,33 +38,24 @@ class Gatto extends Felino
 {
 	public Gatto()
 	{
-		super(Taglia.Piccola);
+		super(Taglia.Piccola, "Miao!");
 	}	
-	
-	public void emettiVerso()
-	{
-		System.out.println("Miao!");
-	}
 }
 
 class Tigre extends Felino
 {
 	public Tigre()
 	{
-		super(Taglia.Grande);
+		super(Taglia.Grande, "MIAO!");
 	}
-	
-	public void emettiVerso()
-	{
-		System.out.println("MIAO!!");
-	}
+
 }
 
 abstract class Cane extends Mammifero
 {
 	public Cane(Taglia taglia)
 	{
-		super(taglia, 4);
+		super(taglia, 4, "Wof!");
 	}
 }
 
@@ -72,11 +65,6 @@ class Chihuahua extends Cane
 	{
 		super(Taglia.Piccola);
 	}
-	
-	public void emettiVerso()
-	{
-		System.out.println("Bau");
-	}
 }
 
 class Beagle extends Cane
@@ -84,11 +72,6 @@ class Beagle extends Cane
 	public Beagle()
 	{
 		super(Taglia.Media);
-	}
-	
-	public void emettiVerso()
-	{
-		System.out.println("Bau!");
 	}
 }
 
@@ -98,18 +81,13 @@ class Terranova extends Cane
 	{
 		super(Taglia.Grande);
 	}
-	
-	public void emettiVerso()
-	{
-		System.out.println("BAU!");
-	}
 }
 
 abstract class Uccello extends Animale
 {
-	public Uccello(Taglia taglia)
+	public Uccello(Taglia taglia, String verso)
 	{
-		super(taglia, 2);
+		super(taglia, 2, verso);
 	}
 }
 
@@ -117,12 +95,7 @@ class Corvo extends Uccello
 {
 	public Corvo()
 	{
-		super(Taglia.Media);
-	}
-	
-	public void emettiVerso()
-	{
-		System.out.println("Cra!");
+		super(Taglia.Media, "Cra!");
 	}
 }
 
@@ -130,12 +103,7 @@ class Passero extends Uccello
 {
 	public Passero()
 	{
-		super(Taglia.Piccola);
-	}
-	
-	public void emettiVerso()
-	{
-		System.out.println("Chip!");
+		super(Taglia.Piccola, "Chip!");
 	}
 }
 
@@ -143,11 +111,6 @@ class Millepiedi extends Animale
 {
 	public Millepiedi()
 	{
-		super(Taglia.Piccola, 1000);
-	}
-	
-	public void emettiVerso()
-	{
-		System.out.println("♫ E il millepiedi come fa? ♫");
+		super(Taglia.Piccola, 1000, "♫ E il millepiedi come fa? ♫");
 	}
 }
